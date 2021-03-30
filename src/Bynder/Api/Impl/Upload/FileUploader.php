@@ -185,9 +185,11 @@ class FileUploader
      */
     private function requestUploadInformationAsync($filePath)
     {
+        // We are only interested in saving the file's name, not its full path
+        $fileName = pathinfo($filePath)['filename'];
         return $this->requestHandler->sendRequestAsync('POST', 'api/upload/init',
             [
-                'form_params' => ['filename' => $filePath]
+                'form_params' => ['filename' => $fileName]
             ]
         );
     }

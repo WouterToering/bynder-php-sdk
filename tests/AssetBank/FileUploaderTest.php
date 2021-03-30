@@ -138,10 +138,11 @@ class FileUploaderTest extends TestCase
      */
     private static function getInitUploadRequest($filePath)
     {
+        $fileName = pathinfo($filePath)['filename'];
         return [
             'POST',
             'api/upload/init',
-            ['form_params' => ['filename' => $filePath]]
+            ['form_params' => ['filename' => $fileName]]
         ];
     }
 
